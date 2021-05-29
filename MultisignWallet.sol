@@ -1,8 +1,8 @@
 pragma solidity 0.7.5;
 
-import "./Owneable.sol";
+import "./Owner.sol";
 
-contract MultisignWallet is Owneable {
+contract MultisignWallet is Owner {
     address[] public walletManagers;
     uint numberOfAprovalsRequired;
     mapping(address => uint) balance;
@@ -25,11 +25,6 @@ contract MultisignWallet is Owneable {
          admins[walletManagers[0]] = true;
          admins[walletManagers[1]] = true;
          admins[walletManagers[2]] = true;
-         
-         // Investigate if is posible to use for in the constructor.
-        // for (uint i = 0 ; i >= walletManagers.length; i++){
-        //   admins[walletManagers[i]] = true;
-        // }
     }
  
     function createTransfer(uint _ammountToTransfer, address payable _recipient, string memory motive) public {
@@ -82,8 +77,8 @@ contract MultisignWallet is Owneable {
     function isMember() public view returns (bool) {
         return admins[msg.sender];
     }
-    
-    function getTransactionMotive(string _id) public view returns ( string){
+   
+    function getTransactionMotive(uint _id) public view returns ( string memory){
         require(admins[msg.sender] == true, "Members only");
         return transferRequest[_id].motive;
     }
