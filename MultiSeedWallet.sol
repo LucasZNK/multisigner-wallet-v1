@@ -2,7 +2,7 @@ pragma solidity 0.7.5;
 
 import "./Owner.sol";
 
-contract MultisignWallet is Owner {
+contract MultiSeedWallet is Owner {
     uint numberOfAprovalsRequired;
     mapping(address => uint) balance;
     mapping(address => bool) admins;
