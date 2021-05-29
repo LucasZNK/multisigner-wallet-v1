@@ -13,7 +13,7 @@ Solidity 0.7.5 or higher
 
 Currently you can download this and import in https://remix.ethereum.org/ and use it. 
 
-In the feature im going to add instruction to use locally.
+In the future im going to add instruction to use locally.
 
 ```
 1. Import the files in remix
