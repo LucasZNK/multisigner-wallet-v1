@@ -18,7 +18,7 @@ In the future im going to add instruction to use locally.
 ```
 1. Import the files in remix
 2. Build every file pressing "CTRL + S " in each file.
-3. Go to deploy and deploy "MultisignWallet.sol" with an array of members in ethereum address and the number of aprovals required to withdraw
+3. Go to deploy and deploy "MultiSeedWallet.sol" with an array of members in ethereum address and the number of aprovals required to withdraw
 ```
 ### Deploy Example
 
