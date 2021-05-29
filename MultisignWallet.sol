@@ -3,7 +3,6 @@ pragma solidity 0.7.5;
 import "./Owner.sol";
 
 contract MultisignWallet is Owner {
-    address[] public walletManagers;
     uint numberOfAprovalsRequired;
     mapping(address => uint) balance;
     mapping(address => bool) admins;
@@ -18,15 +17,15 @@ contract MultisignWallet is Owner {
     }
     
     TransferRequest[] public transferRequest;
-
-    constructor(){
-        walletManagers = [msg.sender,0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2,0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db];
-        numberOfAprovalsRequired = 3;
-         admins[walletManagers[0]] = true;
-         admins[walletManagers[1]] = true;
-         admins[walletManagers[2]] = true;
+    
+    constructor(address[] memory walletManagers, uint aproves) {
+        for (uint managersCount = 0 ; managersCount < walletManagers.length; managersCount ++) {
+            admins[walletManagers[managersCount]] = true;
+        }
+        admins[msg.sender] = true;
+        numberOfAprovalsRequired = aproves;
     }
- 
+    
     function createTransfer(uint _ammountToTransfer, address payable _recipient, string memory motive) public {
         require(address(this).balance >= _ammountToTransfer, "The contract don't have sufficient founds");
         require(address(this) != _recipient, "Sender must be different to the contract address");
