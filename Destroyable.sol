@@ -1,7 +1,7 @@
-import "./Owneable.sol";
+import "./Owner.sol";
 
-contract Destroyable is Owneable {
-    function destroy() public onlyOwner {
+contract Destroyable is Owner {
+    function destroy() public isOwner {
         selfdestruct(msg.sender);
     }
 }
