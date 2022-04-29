@@ -1,4 +1,4 @@
-# Multi Seed Ethereum Wallet v1
+# Multi Signer Ethereum Wallet v1
 
 A multi-seed wallet to manage funds between all member managers, all money is put in and can only be withdrawn once all admins approve the transactions.
 
